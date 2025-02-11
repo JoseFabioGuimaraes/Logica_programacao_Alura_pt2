@@ -1,11 +1,47 @@
 function comprar(){
     let tipoIngresso = document.getElementById('tipo-ingresso').value;
-    let quantidadeIngressos = document.getElementById('qtd').value;
+    let quantidadeIngressos = parseInt(document.getElementById('qtd').value);
 
-    let quantPista = document.getElementById('qtd-pista');
-    let quantSuperior = document.getElementById('qtd-superior');
-    let quantInferior = document.getElementById('qtd-inferior');
+    if (tipoIngresso == 'pista'){
+        comprarPista(quantidadeIngressos) ;  
+    } else if(tipoIngresso == 'inferior') {
+        comprarInferior(quantidadeIngressos)
+    } else {
+        comprarSuperior(quantidadeIngressos)
+    }
 
-    alert(quantPista)
-    alert(quantidadeIngressos)
+
+}
+
+function comprarPista(quantidade){
+    let qtdPista = parseInt(document.getElementById('qtd-pista').textContent);
+    if(quantidade > qtdPista){
+        alert("Quantidade superior às disponiveis para a Pista");
+    } else{
+        qtdPista = qtdPista - quantidade;
+        document.getElementById('qtd-pista').textContent = qtdPista;
+        alert("Compra realizada com sucesso");
+    }
+}
+
+function comprarInferior(quantidade){
+    let qtdInferior = parseInt(document.getElementById('qtd-inferior').textContent);
+    if(quantidade > qtdInferior){
+        alert("Quantidade superior às disponiveis para as cadeiras Inferiores");
+    } else{
+        qtdInferior = qtdInferior - quantidade;
+        document.getElementById('qtd-inferior').textContent = qtdInferior;
+        alert("Compra realizada com sucesso");
+    }
+}
+
+function comprarSuperior(quantidade){
+    let qtdSuperior = parseInt(document.getElementById('qtd-superior').textContent);
+    if(quantidade > qtdSuperior){
+        alert("Quantidade superior às disponiveis para as cadeiras Superiores");
+    } else{
+        qtdSuperior = qtdSuperior - quantidade;
+        document.getElementById('qtd-superior').textContent = qtdSuperior;
+        alert("Compra realizada com sucesso");
+    }
 }
